@@ -1,0 +1,13 @@
+<p [hidden]="isHidden">first works!</p>
+{{name}}
+<button (click)="showHide()" class="btn btn-primary">
+  {{showHideButtonMessage}}
+</button>
+<hr>
+in first <cni-second></cni-second>
+<hr>
+<input
+  (blur)="changeInputContent(inputElement.value)" type="text" class="form-control" #inputElement>
+<div>
+  le contenu de l'input est : {{inputContent}}
+</div>
