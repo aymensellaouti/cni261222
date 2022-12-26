@@ -1,0 +1,15 @@
+<div
+  [style.backgroundColor]="color"
+>CNI</div>
+
+<input
+  (change)="changeColor(colorInput.value)"
+  #colorInput
+  type="text" class="form-control">
+
+
+<button
+  (click)="reset()"
+  class="btn btn-danger">
+  reset
+</button>
