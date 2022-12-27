@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-color',
@@ -6,12 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./color.component.css'],
 })
 export class ColorComponent {
+  @Input()
   defaultColor = 'red';
-  color = this.defaultColor;
+  color = '';
   changeColor(newColor: string): void {
     this.color = newColor;
   }
   reset() {
     this.changeColor(this.defaultColor);
+  }
+  ngOnInit() {
+    this.color = this.defaultColor;
   }
 }
