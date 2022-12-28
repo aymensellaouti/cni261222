@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
@@ -25,6 +28,7 @@ import { BtcToUsdPipe } from './pipes/btc-to-usd.pipe';
 import { DefaultImagePipe } from './pipes/cv/default-image.pipe';
 import { LOGGER_TOKEN } from './injectionTokens/logger.token';
 import { LoggerSevice } from './services/logger.service';
+import { TodoComponent } from './todo/compononets/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -47,11 +51,16 @@ import { LoggerSevice } from './services/logger.service';
     RainbowDirective,
     BtcToUsdPipe,
     DefaultImagePipe,
+    TodoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [
-    LoggerSevice
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
+  providers: [LoggerSevice],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
