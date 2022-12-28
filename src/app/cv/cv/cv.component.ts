@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Cv } from '../model/cv';
+import { LoggerSevice } from '../../services/logger.service';
+import { LOGGER_TOKEN } from '../../injectionTokens/logger.token';
+import { SayHelloService } from '../../services/say-hello.service';
 
 @Component({
   selector: 'app-cv',
@@ -7,26 +10,18 @@ import { Cv } from '../model/cv';
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
+  constructor(
+    private loggerService: LoggerSevice,
+    private sayHelloService: SayHelloService
+  ) {
+    this.loggerService.logger('cc');
+    this.sayHelloService.hello();
+  }
+  date = new Date();
   selectedCv: Cv | null = null;
   cvs: Cv[] = [
-    new Cv(
-      1,
-      'sellaouti',
-      'aymen',
-      'teacher',
-      'rotating_card_profile2.png',
-      '12345',
-      40
-    ),
-    new Cv(
-      2,
-      'sellaouti',
-      'skander',
-      'enfant',
-      'rotating_card_profile3.png',
-      '12345',
-      4
-    ),
+    new Cv(1, 'sellaouti', 'aymen', 'teacher', 'as.jpg', '12345', 40),
+    new Cv(2, 'sellaouti', 'skander', 'enfant', '    ', '12345', 4),
   ];
   getSelectedCv(cv: Cv): void {
     this.selectedCv = cv;

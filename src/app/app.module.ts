@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
-
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second.component';
@@ -22,6 +21,10 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { NgClassComponent } from './directives/ng-class/ng-class.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
+import { BtcToUsdPipe } from './pipes/btc-to-usd.pipe';
+import { DefaultImagePipe } from './pipes/cv/default-image.pipe';
+import { LOGGER_TOKEN } from './injectionTokens/logger.token';
+import { LoggerSevice } from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -41,14 +44,14 @@ import { RainbowDirective } from './directives/rainbow.directive';
     MiniWordComponent,
     NgClassComponent,
     HighlightDirective,
-    RainbowDirective
+    RainbowDirective,
+    BtcToUsdPipe,
+    DefaultImagePipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [
+    LoggerSevice
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
