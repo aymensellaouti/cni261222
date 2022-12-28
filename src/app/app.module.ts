@@ -30,6 +30,7 @@ import { LOGGER_TOKEN } from './injectionTokens/logger.token';
 import { LoggerSevice } from './services/logger.service';
 import { TodoComponent } from './todo/compononets/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
     DefaultImagePipe,
     TodoComponent,
     EmbaucheComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
