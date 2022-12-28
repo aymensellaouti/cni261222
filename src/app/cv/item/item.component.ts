@@ -9,9 +9,8 @@ import { Cv } from '../model/cv';
 export class ItemComponent {
   @Input() cv: Cv | null = null;
   @Output() selectItem = new EventEmitter<Cv>();
+  @Input() size = 50;
   sendCv(): void {
-    if (this.cv)
-      this.selectItem.emit(this.cv);
+    if (this.cv) this.selectItem.emit(this.cv);
   }
-
 }

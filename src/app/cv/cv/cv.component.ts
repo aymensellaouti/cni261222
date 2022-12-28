@@ -5,6 +5,7 @@ import { LOGGER_TOKEN } from '../../injectionTokens/logger.token';
 import { SayHelloService } from '../../services/say-hello.service';
 import { TodoService } from '../../todo/services/todo.service';
 import { ToastrService } from 'ngx-toastr';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-cv',
@@ -12,25 +13,25 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
+  date = new Date();
+  selectedCv: Cv | null = null;
+  cvs: Cv[] = [];
+
   constructor(
     private loggerService: LoggerSevice,
     private sayHelloService: SayHelloService,
     private todoService: TodoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cvService: CvService
   ) {
     this.loggerService.logger('cc');
     this.sayHelloService.hello();
+    this.cvs = this.cvService.getCvs();
   }
 
   ngOnInit() {
     this.toastr.info('Bienvenu dans la cvTech');
   }
-  date = new Date();
-  selectedCv: Cv | null = null;
-  cvs: Cv[] = [
-    new Cv(1, 'sellaouti', 'aymen', 'teacher', 'as.jpg', '12345', 40),
-    new Cv(2, 'sellaouti', 'skander', 'enfant', '    ', '12345', 4),
-  ];
   getSelectedCv(cv: Cv): void {
     this.selectedCv = cv;
     /*     this.todoService.logTodos(); */

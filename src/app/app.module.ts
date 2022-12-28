@@ -29,6 +29,7 @@ import { DefaultImagePipe } from './pipes/cv/default-image.pipe';
 import { LOGGER_TOKEN } from './injectionTokens/logger.token';
 import { LoggerSevice } from './services/logger.service';
 import { TodoComponent } from './todo/compononets/todo/todo.component';
+import { EmbaucheComponent } from './cv/embauche/embauche.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TodoComponent } from './todo/compononets/todo/todo.component';
     BtcToUsdPipe,
     DefaultImagePipe,
     TodoComponent,
+    EmbaucheComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
 <div *ngIf="cv" (click)="sendCv()">
-  <img src="assets/images/{{cv.path | defaultImage}}" width="50" height="50" class="rounded-circle" alt="{{cv?.name}}">
+  <img [ngStyle]="{
+      height: size + 'px',
+      width: size + 'px'
+    }" src="assets/images/{{cv.path | defaultImage}}" class="rounded-circle" alt="{{cv?.name}}">
 
   {{cv.firstname}} {{cv.name}}
 </div>
