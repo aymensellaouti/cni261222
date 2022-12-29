@@ -1,0 +1,5 @@
+<form #testForm="ngForm">
+  name : <input type="text" class="form-control" ngModel name="name">
+  age: <input type="text" class="form-control" ngModel name="age">
+  <button (click)="test(testForm)">submit</button>
+</form>

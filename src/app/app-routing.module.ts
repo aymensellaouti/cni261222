@@ -10,6 +10,7 @@ import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
 import { FrontComponent } from './component/front/front.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { NF404Component } from './component/nf404/nf404.component';
+import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
   /* /color/gren/blue */
@@ -29,6 +30,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [{ path: 'word', component: MiniWordComponent }],
   },
+  { path: 'login', component: LoginComponent },
   { path: ':var', component: SecondComponent },
   { path: '**', component: NF404Component },
 ];
