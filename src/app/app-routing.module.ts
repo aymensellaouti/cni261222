@@ -7,17 +7,30 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second.component';
 import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
+import { FrontComponent } from './component/front/front.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { NF404Component } from './component/nf404/nf404.component';
 
 const routes: Routes = [
   /* /color/gren/blue */
-  { path: '', component: FirstComponent },
-
-  { path: 'cv', component: CvComponent },
-  { path: 'cv/:id', component: DetailCvComponent },
-  { path: 'todo', component: TodoComponent },
-  { path: 'color/:favoriteColor/:color', component: ColorComponent },
-  { path: 'word', component: MiniWordComponent },
+  {
+    path: '',
+    component: FrontComponent,
+    children: [
+      { path: 'accueil', component: FirstComponent },
+      { path: 'cv', component: CvComponent },
+      { path: 'cv/:id', component: DetailCvComponent },
+      { path: 'todo', component: TodoComponent },
+      { path: 'color/:favoriteColor/:color', component: ColorComponent },
+    ],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [{ path: 'word', component: MiniWordComponent }],
+  },
   { path: ':var', component: SecondComponent },
+  { path: '**', component: NF404Component },
 ];
 
 @NgModule({

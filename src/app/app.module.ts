@@ -32,6 +32,9 @@ import { TodoComponent } from './todo/compononets/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
+import { FrontComponent } from './component/front/front.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { NF404Component } from './component/nf404/nf404.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
     EmbaucheComponent,
     NavbarComponent,
     DetailCvComponent,
+    FrontComponent,
+    AdminComponent,
+    NF404Component,
   ],
   imports: [
     BrowserModule,
