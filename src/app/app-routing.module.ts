@@ -6,12 +6,14 @@ import { ColorComponent } from './components/color/color.component';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second.component';
+import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
 
 const routes: Routes = [
   /* /color/gren/blue */
   { path: '', component: FirstComponent },
 
   { path: 'cv', component: CvComponent },
+  { path: 'cv/:id', component: DetailCvComponent },
   { path: 'todo', component: TodoComponent },
   { path: 'color/:favoriteColor/:color', component: ColorComponent },
   { path: 'word', component: MiniWordComponent },
