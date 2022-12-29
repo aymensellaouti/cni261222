@@ -31,6 +31,7 @@ import { LoggerSevice } from './services/logger.service';
 import { TodoComponent } from './todo/compononets/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DetailCvComponent } from './cv/detail-cv/detail-cv.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     TodoComponent,
     EmbaucheComponent,
     NavbarComponent,
+    DetailCvComponent,
   ],
   imports: [
     BrowserModule,
