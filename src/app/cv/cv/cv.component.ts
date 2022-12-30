@@ -28,7 +28,17 @@ export class CvComponent {
   ) {
     this.loggerService.logger('cc');
     this.sayHelloService.hello();
-    this.cvs = this.cvService.getCvs();
+    this.cvService.getCvs().subscribe({
+      next: (cvs) => {
+        this.cvs = cvs;
+      },
+      error: (e) => {
+        this.cvs = this.cvService.getFakeCvs();
+        this.toastr.error(
+          `Problème avec le serveur veuillez consulter l'admin`
+        );
+      },
+    });
     this.cvService.selectItem$.pipe(distinctUntilChanged()).subscribe(() => {
       this.nb++;
     });

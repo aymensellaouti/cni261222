@@ -3,6 +3,7 @@ import { CvService } from '../services/cv.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cv } from '../model/cv';
 import { APP_ROUTES } from '../../config/routes.config';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail-cv',
@@ -14,20 +15,32 @@ export class DetailCvComponent {
   constructor(
     private CvService: CvService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toaster: ToastrService
   ) {}
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      this.cv = this.CvService.getCvById(params['id']);
-      if (!this.cv) {
-        this.router.navigate([APP_ROUTES.cv]);
-      }
+      this.CvService.getCvById(params['id']).subscribe({
+        next: (cv) => {
+          this.cv = cv;
+        },
+        error: () => {
+          this.router.navigate([APP_ROUTES.cv]);
+        },
+      });
     });
   }
   delete() {
     if (this.cv) {
-      this.CvService.deleteCv(this.cv);
-      this.router.navigate([APP_ROUTES.cv]);
+      this.CvService.deleteCv(this.cv.id).subscribe({
+        next: () => {
+          this.toaster.success(`${this.cv?.name} a été supprimé avec succès`);
+          this.router.navigate([APP_ROUTES.cv]);
+        },
+        error: (e) => {
+          console.log('delete error', e);
+        },
+      });
     }
   }
 }
