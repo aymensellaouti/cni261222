@@ -8,8 +8,8 @@ import { Cv } from '../model/cv';
 })
 export class ListComponent {
   @Input() cvs: Cv[] = [];
-  @Output() forwardSelectedItem = new EventEmitter<Cv>();
+  /* @Output() forwardSelectedItem = new EventEmitter<Cv>();
   forwardCv(cv: Cv): void {
     this.forwardSelectedItem.emit(cv);
-  }
+  } */
 }

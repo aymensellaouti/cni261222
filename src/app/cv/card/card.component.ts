@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Cv } from '../model/cv';
 import { EmbaucheService } from '../services/embauche.service';
 import { ToastrService } from 'ngx-toastr';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-card',
@@ -12,12 +13,14 @@ export class CardComponent {
   @Input() cv: Cv | null = null;
   constructor(
     private embaucheService: EmbaucheService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cvService: CvService
   ) {
     console.log('on constructor', this.cv);
   }
   ngOnInit() {
     console.log('on ngOnInit', this.cv);
+    this.cvService.selectItem$.subscribe((cv) => (this.cv = cv));
   }
   embaucher() {
     if (this.cv) {
