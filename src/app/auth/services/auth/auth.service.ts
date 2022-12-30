@@ -6,12 +6,18 @@ import { HttpClient } from '@angular/common/http';
 import { API } from '../../../config/api.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: CredentialsDto): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(API.login, credentials);
+  }
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  logout(): void {
+    localStorage.removeItem('token');
   }
 }

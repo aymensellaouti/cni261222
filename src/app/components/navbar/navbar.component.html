@@ -9,11 +9,16 @@
       <div class="navbar-nav">
         <a class="nav-link" [routerLink]="['']" [routerLinkActiveOptions]="{exact: true}"
           routerLinkActive="active text-primary">Home</a>
-        <a class="nav-link" [routerLink]="['cv']" routerLinkActive="active text-primary">Cv</a>
+        <a class="nav-link" [routerLink]="['cv']" [routerLinkActiveOptions]="{exact: true}"
+          routerLinkActive="active text-primary">Cv</a>
+        <a *ngIf="authService.isAuthenticated()" class="nav-link" [routerLink]="['cv/add']"
+          routerLinkActive="active text-primary">Add Cv</a>
         <a class="nav-link" [routerLink]="['todo']" routerLinkActive="active text-primary">Todo</a>
         <a class="nav-link" [routerLink]="['color']" routerLinkActive="active text-primary">color</a>
         <a class="nav-link" [routerLink]="['admin','word']" routerLinkActive="active text-primary">word</a>
-        <a class="nav-link" [routerLink]="['login']" routerLinkActive="active text-primary">login</a>
+        <a *ngIf="!authService.isAuthenticated()" class="nav-link" [routerLink]="['login']"
+          routerLinkActive="active text-primary">login</a>
+        <a *ngIf="authService.isAuthenticated()" class="nav-link" (click)="logout()">logout</a>
       </div>
     </div>
   </div>

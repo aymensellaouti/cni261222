@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cv } from '../model/cv';
 import { APP_ROUTES } from '../../config/routes.config';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../auth/services/auth/auth.service';
 
 @Component({
   selector: 'app-detail-cv',
@@ -16,7 +17,8 @@ export class DetailCvComponent {
     private CvService: CvService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    public authService: AuthService
   ) {}
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {

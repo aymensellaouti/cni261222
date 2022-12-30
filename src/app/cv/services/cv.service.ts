@@ -27,11 +27,7 @@ export class CvService {
     return this.http.get<Cv>(API.cv + id);
   }
   deleteCv(id: number): Observable<any> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      localStorage.getItem('token') ?? ''
-    );
-    return this.http.delete<Cv>(API.cv + id, { headers });
+    return this.http.delete<Cv>(API.cv + id);
   }
   getFAkeCvById(id: number): Cv | null {
     return this.cvs.find((cv: Cv) => cv.id == id) ?? null;
@@ -46,5 +42,8 @@ export class CvService {
   }
   selectCv(cv: Cv) {
     this._selectCvSubject.next(cv);
+  }
+  addCv(cv: Cv) {
+    return this.http.post<Cv>(API.cv, cv);
   }
 }

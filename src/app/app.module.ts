@@ -40,6 +40,8 @@ import { TestFormComponent } from './components/test-form/test-form.component';
 import { LoginComponent } from './component/login/login.component';
 import { TestObservableComponent } from './components/test-observable/test-observable.component';
 import { TestHttpComponent } from './components/test-http/test-http.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { AUTH_INTERCEPTOR_PROVIDER } from './auth/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { TestHttpComponent } from './components/test-http/test-http.component';
     LoginComponent,
     TestObservableComponent,
     TestHttpComponent,
+    AddCvComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,7 @@ import { TestHttpComponent } from './components/test-http/test-http.component';
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
   ],
-  providers: [LoggerSevice],
+  providers: [LoggerSevice, AUTH_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

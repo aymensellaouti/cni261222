@@ -11,6 +11,8 @@ import { FrontComponent } from './component/front/front.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { NF404Component } from './component/nf404/nf404.component';
 import { LoginComponent } from './component/login/login.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   /* /color/gren/blue */
@@ -20,6 +22,7 @@ const routes: Routes = [
     children: [
       { path: 'accueil', component: FirstComponent },
       { path: 'cv', component: CvComponent },
+      { path: 'cv/add', component: AddCvComponent, canActivate: [AuthGuard] },
       { path: 'cv/:id', component: DetailCvComponent },
       { path: 'todo', component: TodoComponent },
       { path: 'color/:favoriteColor/:color', component: ColorComponent },
