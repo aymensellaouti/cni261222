@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ApplicationRef, Component, Inject } from '@angular/core';
 import { Cv } from '../model/cv';
 import { LoggerSevice } from '../../services/logger.service';
 import { LOGGER_TOKEN } from '../../injectionTokens/logger.token';
@@ -24,13 +24,15 @@ export class CvComponent {
     private sayHelloService: SayHelloService,
     private todoService: TodoService,
     private toastr: ToastrService,
-    private cvService: CvService
+    private cvService: CvService,
+    private appRef: ApplicationRef
   ) {
     this.loggerService.logger('cc');
     this.sayHelloService.hello();
     this.cvService.getCvs().subscribe({
       next: (cvs) => {
         this.cvs = cvs;
+        this.appRef.tick();
       },
       error: (e) => {
         this.cvs = this.cvService.getFakeCvs();
